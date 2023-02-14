@@ -1,0 +1,38 @@
+# Exploration
+
+```elixir
+Mix.install([
+  {:explorer, "~> 0.5.0"}
+])
+```
+
+## Section
+
+```elixir
+alias Explorer.DataFrame, as: DF
+
+path_to_treatment_data = Path.join([__DIR__, "artificial_patient_treatment.csv"])
+
+dtypes = [
+  {"patient", :string},
+  {"action", :string},
+  {"org:resource", :string},
+  {"DateTime", :date}
+]
+
+{:ok, df} = DF.from_csv(path_to_treatment_data, dtypes: dtypes)
+```
+
+```elixir
+
+```
+
+For the creation of a Directly-Follows-Graph (DFG) there a three parameters by which we can filter
+
+* minimal number of traces for each variant included
+* minimal number of events for each activity included
+* minimal number of direct successions for each relation included
+
+```elixir
+activities = DF.distinct(df, [" action"])
+```
